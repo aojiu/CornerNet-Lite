@@ -6,7 +6,10 @@ from core.vis_utils import draw_bboxes
 
 detector = CornerNet_Saccade()
 image    = cv2.imread("demo.jpg")
+with open("embedding.txt", "a") as filehandle:
+    filehandle.write("demo.jpg embedding \n")
 
+    filehandle.close()
 bboxes = detector(image)
 image  = draw_bboxes(image, bboxes)
 cv2.imwrite("demo_out.jpg", image)
